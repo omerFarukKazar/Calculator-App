@@ -23,13 +23,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yzv-Gr-jhO" userLabel="NumberLabelStackView">
                                         <rect key="frame" x="0.0" y="0.0" width="342.66666666666669" height="72.333333333333329"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwu-Rm-nu4" userLabel="PreviousNumberLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Jwu-Rm-nu4" userLabel="PreviousNumberLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="342.66666666666669" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="oiy-lN-4d9" userLabel="CurrentNumberLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="oiy-lN-4d9" userLabel="CurrentNumberLabel">
                                                 <rect key="frame" x="0.0" y="30.333333333333329" width="342.66666666666669" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
                                                 <nil key="textColor"/>
@@ -349,6 +349,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
                                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="startParanthesis:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c3O-m1-b7n"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIT-Rc-qBT" userLabel=")">
                                                 <rect key="frame" x="92.333333333333343" y="0.0" width="82.333333333333343" height="37"/>
@@ -363,6 +366,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
                                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="endParanthesis:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u30-cM-IhM"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3V-zm-v02">
                                                 <rect key="frame" x="184.66666666666666" y="0.0" width="82.333333333333343" height="37"/>
@@ -377,6 +383,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
                                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="clearMemory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rlu-TQ-tRX"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjA-QM-gID">
                                                 <rect key="frame" x="277" y="0.0" width="82.333333333333314" height="37"/>
@@ -391,6 +400,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
                                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="saveResultToMemory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WVQ-Vy-tGW"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjt-dk-hGC">
                                                 <rect key="frame" x="369.33333333333331" y="0.0" width="82.666666666666686" height="37"/>
@@ -405,6 +417,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
                                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="saveNegativeResultToMemory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AuY-Au-HVo"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlS-m1-lOW">
                                                 <rect key="frame" x="462" y="0.0" width="82.333333333333371" height="37"/>
@@ -419,6 +434,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
                                                     <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="showMemoryItems:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tai-BH-Mm4"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
