@@ -74,6 +74,7 @@ final class ViewController: UIViewController {
             }
         }
     */
+    private var memory: [String] = ["", ""]
     
     //MARK: - Lifecycle Methods
 
@@ -82,7 +83,7 @@ final class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    // MARK: - IBActions
+    // MARK: - Basic Calculator IBActions
     
     @IBAction func digitButtonTapped(_ sender: UIButton) { // Rakam butonlarında tüm rakamlar için aynı fonksiyonalite gerçekleştirileceği ve hepsinde değişen parametre ortak olduğu için ( number ) Tek bir IBAction üzerinden yönetmek sorun olmadı.
         guard let number = sender.titleLabel?.text else { return }
@@ -128,6 +129,36 @@ final class ViewController: UIViewController {
         currentOperationLabel.text = currentOperation
     }
     
+    // MARK: - Scientific Calculator IBActions
+    
+    @IBAction func startParanthesis(_ sender: UIButton) {
+        // Will be developed...
+        // It's easy to print paranthesis but how to decide which operation between paranthesis? In case of more than one paranthesis Use Regex maybe?
+        //
+    }
+    
+    @IBAction func endParanthesis(_ sender: UIButton) {
+        // Will be developed...
+        // Use Regex maybe?
+    }
+    
+    @IBAction func clearMemory(_ sender: UIButton) {
+        memory.removeAll()
+    }
+    
+    @IBAction func saveResultToMemory(_ sender: UIButton) {
+        memory[0] = ("\(previousOperationLabel.text ?? "") = \(result)")
+        // A control flow can be written
+    }
+    
+    @IBAction func saveNegativeResultToMemory(_ sender: UIButton) {
+        memory[1] = ("\(previousOperationLabel.text ?? "") = -\(result)")
+        // A control flow can be written
+    }
+    
+    @IBAction func showMemoryItems(_ sender: UIButton) {
+        previousOperationLabel.text = "\(memory)"
+    }
     // MARK: - Methods
     
     /**
