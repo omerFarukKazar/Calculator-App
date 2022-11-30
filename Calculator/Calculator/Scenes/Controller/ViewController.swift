@@ -9,6 +9,25 @@ import UIKit
 
 enum BasicOperator: Int { // Enum to cover all operators for basic calculator mode ( portrait mode )
     case clear = 1, plusMinus, percentage, division, multiplication, subtraction, addition, equal, dot
+    
+    var operatorSign: String {
+        switch self {
+        case .plusMinus:
+            return "-"
+        case .percentage:
+            return "%"
+        case .division:
+            return "/"
+        case .multiplication:
+            return "*"
+        case .addition:
+            return "+"
+        case .dot:
+            return "."
+        default:
+            return ""
+        }
+    }
     // enum conforms the Int protocol in order to match each case to it's button tag.
 }
 
@@ -31,7 +50,7 @@ final class ViewController: UIViewController {
     
     // MARK: - Properties
     private var result: Double = .zero
-    private let operators = ["", "", "-", "%", "/", "*", "-", "+"] // Idk if this is okay.
+    // private let operators = ["", "", "-", "%", "/", "*", "-", "+"] // extraOperator fonksiyonunda tapped parametresine göndermek için kullanıyordum ancak daha sonra enum içerisinde tanımladım. enum daha Swifty ancak hangisi daha verimli ya da genel olarak daha iyi bilmiyorum.
     private let operatorSet = CharacterSet(["%", "*", "/", "+", "-"])
     
     /*
@@ -55,6 +74,7 @@ final class ViewController: UIViewController {
             }
         }
     */
+    private var memory: [String] = ["", ""]
     
     //MARK: - Lifecycle Methods
 
@@ -63,7 +83,7 @@ final class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    // MARK: - IBActions
+    // MARK: - Basic Calculator IBActions
     
     @IBAction func digitButtonTapped(_ sender: UIButton) { // Rakam butonlarında tüm rakamlar için aynı fonksiyonalite gerçekleştirileceği ve hepsinde değişen parametre ortak olduğu için ( number ) Tek bir IBAction üzerinden yönetmek sorun olmadı.
         guard let number = sender.titleLabel?.text else { return }
@@ -81,41 +101,64 @@ final class ViewController: UIViewController {
         
         guard var currentOperation = currentOperationLabel.text else { return }
         
-        let operatorTapped = BasicOperator(rawValue: sender.tag)
+        guard let operatorTapped = BasicOperator(rawValue: sender.tag) else { return }
         currentOperationLabel.text = "0"
         
+        print(operatorTapped)
         switch operatorTapped { // Switch the corresponding enum to tappedButton.
         case .clear:
             clear(&currentOperation)
         case .plusMinus:
             plusMinus(&currentOperation)
         case .percentage:
-            print("percentage tapped")
-            extraOperator(&currentOperation, tapped: operators[BasicOperator.percentage.rawValue])
+            extraOperator(&currentOperation, tapped: operatorTapped.operatorSign)
         case .division:
-            extraOperator(&currentOperation, tapped: operators[BasicOperator.division.rawValue])
-            print("division tapped")
+            extraOperator(&currentOperation, tapped: operatorTapped.operatorSign)
         case .multiplication:
-            print("mul tapped")
-            extraOperator(&currentOperation, tapped: operators[BasicOperator.multiplication.rawValue])
+            extraOperator(&currentOperation, tapped: operatorTapped.operatorSign)
         case .subtraction:
-            print("sub tapped")
-            extraOperator(&currentOperation, tapped: operators[BasicOperator.subtraction.rawValue])
+            extraOperator(&currentOperation, tapped: operatorTapped.operatorSign)
         case .addition:
-            print("add tapped")
-            extraOperator(&currentOperation, tapped: operators[BasicOperator.addition.rawValue])
+            extraOperator(&currentOperation, tapped: operatorTapped.operatorSign)
         case .equal:
             previousOperationLabel.text = currentOperation
             currentOperation = calculate(currentOperation)
         case .dot:
             dot(&currentOperation)
-        case .none:
-            currentOperation = "Error. Please press C"
-            print("Error.")
         }
         currentOperationLabel.text = currentOperation
     }
     
+    // MARK: - Scientific Calculator IBActions
+    
+    @IBAction func startParanthesis(_ sender: UIButton) {
+        // Will be developed...
+        // It's easy to print paranthesis but how to decide which operation between paranthesis? In case of more than one paranthesis Use Regex maybe?
+        //
+    }
+    
+    @IBAction func endParanthesis(_ sender: UIButton) {
+        // Will be developed...
+        // Use Regex maybe?
+    }
+    
+    @IBAction func clearMemory(_ sender: UIButton) {
+        memory.removeAll()
+    }
+    
+    @IBAction func saveResultToMemory(_ sender: UIButton) {
+        memory[0] = ("\(previousOperationLabel.text ?? "") = \(result)")
+        // A control flow can be written
+    }
+    
+    @IBAction func saveNegativeResultToMemory(_ sender: UIButton) {
+        memory[1] = ("\(previousOperationLabel.text ?? "") = -\(result)")
+        // A control flow can be written
+    }
+    
+    @IBAction func showMemoryItems(_ sender: UIButton) {
+        previousOperationLabel.text = "\(memory)"
+    }
     // MARK: - Methods
     
     /**
@@ -180,7 +223,7 @@ final class ViewController: UIViewController {
     
     private func plusMinus(_ currentOperation: inout String) {
         if currentOperation.first != "-" {
-            currentOperation = operators[BasicOperator.plusMinus.rawValue] + currentOperation
+            currentOperation = BasicOperator.plusMinus.operatorSign + currentOperation
         } else {
             currentOperation.removeFirst()
         }
@@ -197,7 +240,7 @@ final class ViewController: UIViewController {
     }
     
     /**
-    Appends dot at the given String.
+    Appends dot to the currentOperation parameter.
      */
     
     private func dot(_ currentOperation: inout String) {
