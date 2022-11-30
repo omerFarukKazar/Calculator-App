@@ -145,7 +145,7 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func clearMemory(_ sender: UIButton) {
-        memory.removeAll()
+        memory = ["",""]
     }
     
     @IBAction func saveResultToMemory(_ sender: UIButton) {
@@ -154,7 +154,7 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func saveNegativeResultToMemory(_ sender: UIButton) {
-        memory[1] = ("\(previousOperationLabel.text ?? "") = -\(result)")
+        memory[1] = ("\(previousOperationLabel.text ?? "") = \(-result)")
         // A control flow can be written
     }
     
