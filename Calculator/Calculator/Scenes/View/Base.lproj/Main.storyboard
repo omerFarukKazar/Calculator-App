@@ -3,6 +3,7 @@
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,14 +23,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yzv-Gr-jhO">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="99.666666666666671"/>
                                         <subviews>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwu-Rm-nu4" userLabel="PreviousNumberLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="400" height="0.0"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwu-Rm-nu4" userLabel="PreviousNumberLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="oiy-lN-4d9" userLabel="CurrentNumberLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="400" height="99.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="38" width="400" height="61.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -143,7 +144,8 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="7"/>
-                                                        <buttonConfiguration key="configuration" style="filled" image="multiply" catalog="system" cornerStyle="capsule">
+                                                        <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
+                                                            <imageReference key="image" image="multiply" catalog="system" variableValue="1"/>
                                                             <color key="baseBackgroundColor" systemColor="systemOrangeColor"/>
                                                         </buttonConfiguration>
                                                         <connections>
@@ -326,7 +328,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="displayLabel" destination="oiy-lN-4d9" id="sIX-Ml-b5S"/>
+                        <outlet property="currentOperationLabel" destination="oiy-lN-4d9" id="sIX-Ml-b5S"/>
+                        <outlet property="previousOperationLabel" destination="Jwu-Rm-nu4" id="fc5-Mt-aHt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
