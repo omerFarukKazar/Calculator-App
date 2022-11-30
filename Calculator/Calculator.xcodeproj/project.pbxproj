@@ -109,18 +109,10 @@
 		9DCB2AE52927E95F0015E281 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				9DCB2AE62927E9650015E281 /* Model */,
 				9DCB2AE72927E9680015E281 /* View */,
 				9DCB2AE82927E96A0015E281 /* Controller */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		9DCB2AE62927E9650015E281 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9DCB2AE72927E9680015E281 /* View */ = {
