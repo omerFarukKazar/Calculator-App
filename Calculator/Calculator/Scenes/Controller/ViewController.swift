@@ -22,6 +22,8 @@ enum BasicOperator: Int { // Enum to cover all operators for basic calculator mo
             return "*"
         case .addition:
             return "+"
+        case .subtraction:
+            return "-"
         case .dot:
             return "."
         default:
