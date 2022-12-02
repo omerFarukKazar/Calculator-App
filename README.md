@@ -31,3 +31,5 @@ https://user-images.githubusercontent.com/101255450/204905873-a9efd6aa-2189-4bbc
     * Vary for traits
 * git
     * Transfering uncommitted changes from one branch to another by using git stash
+* Architecture
+    * MVC
